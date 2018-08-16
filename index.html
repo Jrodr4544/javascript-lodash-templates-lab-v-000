@@ -5,15 +5,64 @@
   </head>
   <body>
     <main>
+      <!--<div id="posts"></div>-->
+     <form id="post-form" onsubmit="createPost()">
+          Title: <input type="text" id="postTitle"><br>
+          Body: <input type="textarea" id="postBody"><br>
+          Author: <input type="textarea" id="postAuthor"><br>
+          <input type="submit">
+      </form>
     </main>
-    <script src="node_modules/lodash/lodash.min.js"></script>
-    <script src="index.js"></script>
+      
+      <script id="page-template" type="text/x-lodash-template">
+        <div id="sidebar"></div>
+        <div id="post"></div>
+      </script>
+      
+      <script id="post-template" type='text/x-lodash-template'>
+          <article id="post">
+            <header><%= postTitle %></header>
+            <p><%= postBody %></p>
+            <footer><%= postAuthor %></footer>
+          </article> 
+      </script>
+      
+      <script id="comments-template" type='text/x-lodash-template'>
+       <div id="comments"></div>
+          <form onsubmit="postComment();return false;">
+            Name: <input type="text" id="commenter"><br>
+            Comment: <input type="textarea" id="commentText"><br>
+            <input type="submit">
+          </form>
+      </script>
+      
+      <script id="comment-template" type='text/x-lodash-template'>
+         <footer class="commenter">
+          <p>
+            <span class="posted-by">Posted By: </span>
+                <% if(commenter !== '') { %>
+                  <%= commenter %>
+                <% } else { %>
+                  Anonymous
+                <% } %>
+          </p>
+        </footer>
+      </script>
+  
+    <!--<script src="node_modules/lodash/lodash.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.min.js"></</script>
+    <!--<script src="index.js"></script>-->
+
+   
     <!-- Open this file and call `mocha.run()` in console to run tests -->
     <div id="mocha"></div>
-    <script src="node_modules/mocha/mocha.js"></script>
-    <script src="node_modules/expect/umd/expect.min.js"></script>
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <!--<script src="node_modules/mocha/mocha.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/5.2.0/mocha.js"></script>
+    <!--<script src="node_modules/expect/umd/expect.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/expect/1.20.2/expect.min.js"></script>
+    <!--<script src="node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>mocha.setup('bdd');</script>
-    <script src="test/index-test.js"></script>
+    <!--<script src="test/index-test.js"></script>-->
   </body>
 </html>
