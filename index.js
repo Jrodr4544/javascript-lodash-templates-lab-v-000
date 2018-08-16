@@ -18,8 +18,6 @@ function createPost() {
   
   postElement.innerHTML += post;
   postElement.getElementsByTagName("footer")[0].innerHTML += commentsTemplateFn();
-  
-  // document.getElementById("post").getElementsByTagName("main")[0].innerHTML += commentsTemplate();
 }
 
 
